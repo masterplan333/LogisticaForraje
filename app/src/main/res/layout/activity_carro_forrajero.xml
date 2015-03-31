@@ -1,0 +1,308 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.sebastianypol.logisticaforraje.CarroForrajero"
+    android:background="#ffdcff3b">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Carro Forrajero"
+        android:id="@+id/txtCarroForrajero"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioTPreparatorioCarro"
+        android:layout_marginTop="28dp"
+        android:background="#ffff5f06"
+        android:layout_below="@+id/txtCarroForrajero"
+        android:layout_alignRight="@+id/btnInicioCicloAcarreoCarro"
+        android:layout_alignEnd="@+id/btnInicioCicloAcarreoCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinTPreparatorioCarro"
+        android:background="#ffff5f06"
+        android:layout_above="@+id/btnInicioCicloAcarreoCarro"
+        android:layout_alignLeft="@+id/btnFinCicloAcarreoCarro"
+        android:layout_alignStart="@+id/btnFinCicloAcarreoCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioCicloAcarreoCarro"
+        android:layout_marginTop="34dp"
+        android:background="#ffff1e9d"
+        android:layout_below="@+id/btnInicioTPreparatorioCarro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinCicloAcarreoCarro"
+        android:background="#ffff1e9d"
+        android:layout_alignTop="@+id/btnInicioCicloAcarreoCarro"
+        android:layout_alignRight="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:layout_alignEnd="@+id/btnInicioTEsperaEmbolsadoraCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioCargaIndividualCarro"
+        android:layout_below="@+id/txtCargaIndividualCarro"
+        android:layout_alignLeft="@+id/txtCargaIndividualCarro"
+        android:layout_alignStart="@+id/txtCargaIndividualCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinCargaIndividualCarro"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/btnInicioCargaIndividualCarro"
+        android:layout_alignEnd="@+id/btnInicioCargaIndividualCarro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioTiempoAcarreoCarro"
+        android:layout_above="@+id/btnFinTiempoAcarreoCarro"
+        android:layout_alignLeft="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_alignStart="@+id/btnInicioTransporteEnVacioCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinTiempoAcarreoCarro"
+        android:layout_above="@+id/btnInicioTIempoDescargaCarro"
+        android:layout_alignLeft="@+id/btnInicioTiempoAcarreoCarro"
+        android:layout_alignStart="@+id/btnInicioTiempoAcarreoCarro"
+        android:layout_alignRight="@+id/btnInicioTiempoAcarreoCarro"
+        android:layout_alignEnd="@+id/btnInicioTiempoAcarreoCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:layout_alignBottom="@+id/btnInicioTiempoAcarreoCarro"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinTEsperaEmbolsadoraCarro"
+        android:layout_alignBottom="@+id/btnFinTiempoAcarreoCarro"
+        android:layout_alignRight="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:layout_alignEnd="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:layout_toEndOf="@+id/btnFinRepMantCarro"
+        android:layout_alignLeft="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:layout_alignStart="@+id/btnInicioTEsperaEmbolsadoraCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioTIempoDescargaCarro"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/btnFinCargaIndividualCarro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinTiempoDescargaCarro"
+        android:layout_below="@+id/btnInicioTIempoDescargaCarro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnInicioTIempoDescargaCarro"
+        android:layout_alignEnd="@+id/btnInicioTIempoDescargaCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_alignBottom="@+id/btnInicioTIempoDescargaCarro"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinTransporteEnVacioCarro"
+        android:layout_alignTop="@+id/btnFinTiempoDescargaCarro"
+        android:layout_alignLeft="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_alignStart="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_alignRight="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_alignEnd="@+id/btnInicioTransporteEnVacioCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioTEsperaPicadoraCarro"
+        android:layout_alignBottom="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_alignRight="@+id/btnFinTEsperaEmbolsadoraCarro"
+        android:layout_alignEnd="@+id/btnFinTEsperaEmbolsadoraCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinTEsperaPicadoraCarro"
+        android:layout_alignTop="@+id/btnFinTransporteEnVacioCarro"
+        android:layout_alignLeft="@+id/btnInicioTEsperaPicadoraCarro"
+        android:layout_alignStart="@+id/btnInicioTEsperaPicadoraCarro"
+        android:layout_alignRight="@+id/btnInicioTEsperaPicadoraCarro"
+        android:layout_alignEnd="@+id/btnInicioTEsperaPicadoraCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:id="@+id/btnInicioRepMantCarro"
+        android:background="#ff148cff"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/txtTiempoPreparatorioCarro"
+        android:layout_toStartOf="@+id/txtTiempoPreparatorioCarro" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fin"
+        android:id="@+id/btnFinRepMantCarro"
+        android:background="#ff148cff"
+        android:layout_alignTop="@+id/btnInicioRepMantCarro"
+        android:layout_toRightOf="@+id/txtTiempoPreparatorioCarro"
+        android:layout_toEndOf="@+id/txtTiempoPreparatorioCarro" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tiempo Preparatorio"
+        android:id="@+id/txtTiempoPreparatorioCarro"
+        android:layout_alignTop="@+id/btnFinTPreparatorioCarro"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ciclo de Acarreo"
+        android:id="@+id/txtCicloAcarreoCarro"
+        android:layout_alignBaseline="@+id/btnInicioCicloAcarreoCarro"
+        android:layout_alignBottom="@+id/btnInicioCicloAcarreoCarro"
+        android:layout_alignRight="@+id/txtTrasporteEnVacioCarro"
+        android:layout_alignEnd="@+id/txtTrasporteEnVacioCarro" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tiempo RepMant"
+        android:id="@+id/txtTiempoRepMantCarro"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/txtCarroForrajero"
+        android:layout_alignStart="@+id/txtCarroForrajero" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="T. Carga Individual"
+        android:id="@+id/txtCargaIndividualCarro"
+        android:layout_above="@+id/btnInicioTiempoAcarreoCarro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tiempo  Acarreo"
+        android:id="@+id/txtTiempoAcarreoCarro"
+        android:layout_alignTop="@+id/txtCargaIndividualCarro"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="T. Espera Embol."
+        android:id="@+id/txtTEsperaEmbolCarro"
+        android:layout_alignTop="@+id/txtTiempoAcarreoCarro"
+        android:layout_alignRight="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:layout_alignEnd="@+id/btnInicioTEsperaEmbolsadoraCarro" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tiempo Descarga"
+        android:id="@+id/txtTiempoDescargaCarro"
+        android:layout_above="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Transport. en vacío"
+        android:id="@+id/txtTrasporteEnVacioCarro"
+        android:layout_above="@+id/btnInicioTransporteEnVacioCarro"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="T. Espera Picadora"
+        android:id="@+id/txtEsperaPicadoraCarro"
+        android:layout_alignTop="@+id/txtTrasporteEnVacioCarro"
+        android:layout_alignRight="@+id/btnInicioTEsperaPicadoraCarro"
+        android:layout_alignEnd="@+id/btnInicioTEsperaPicadoraCarro" />
+
+</RelativeLayout>

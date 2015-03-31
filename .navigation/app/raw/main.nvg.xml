@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sebastianypol.logisticaforraje.Embolsadora"/>
+      <point      
+        x = "3312"      
+        y = "944"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sebastianypol.logisticaforraje.Embolsadora"/>
+      <point      
+        x = "4612"      
+        y = "944"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sebastianypol.logisticaforraje.MenuLogisticaForraje"/>
+      <point      
+        x = "1088"      
+        y = "916"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sebastianypol.logisticaforraje.MenuLogisticaForraje"/>
+      <point      
+        x = "2388"      
+        y = "916"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sebastianypol.logisticaforraje.CarroForrajero"/>
+      <point      
+        x = "64"      
+        y = "936"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sebastianypol.logisticaforraje.CarroForrajero"/>
+      <point      
+        x = "1364"      
+        y = "936"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.sebastianypol.logisticaforraje.Logistica"/>
+      <point      
+        x = "2156"      
+        y = "928"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.sebastianypol.logisticaforraje.Logistica"/>
+      <point      
+        x = "3456"      
+        y = "928"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>
