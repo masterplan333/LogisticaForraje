@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Embolsadora"
+            android:label="@string/title_activity_embolsadora" >
+        </activity>
+        <activity
+            android:name=".CarroForrajero"
+            android:label="@string/title_activity_carro_forrajero" >
+        </activity>
+        <activity
+            android:name=".MenuLogisticaForraje"
+            android:label="@string/title_activity_menu_logistica_forraje" >
+        </activity>
     </application>
 
 </manifest>

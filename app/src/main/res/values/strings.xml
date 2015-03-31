@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_embolsadora">Embolsadora</string>
+    <string name="title_activity_carro_forrajero">CarroForrajero</string>
+    <string name="title_activity_menu_logistica_forraje">MenuLogisticaForraje</string>
 </resources>
