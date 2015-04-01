@@ -14,7 +14,10 @@
         android:layout_marginTop="61dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/btnFinPreparatorioPicadora"
-        android:layout_alignStart="@+id/btnFinPreparatorioPicadora" />
+        android:layout_alignStart="@+id/btnFinPreparatorioPicadora"
+        android:enabled="true"
+        android:background="#ffffffff"
+        android:onClick="preparatorioInicio" />
 
     <Button
         android:layout_width="wrap_content"
@@ -25,7 +28,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:enabled="false"
+        android:background="#ffffffff"
+        android:onClick="preparatorioFin" />
 
     <Button
         android:layout_width="wrap_content"
@@ -33,7 +39,10 @@
         android:text="Llegada"
         android:id="@+id/btnLlegadaPicadora"
         android:layout_alignTop="@+id/btnFinPreparatorioPicadora"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:enabled="false"
+        android:background="#ffffffff"
+        android:onClick="trasladoLlegada" />
 
     <Button
         android:layout_width="wrap_content"
@@ -42,7 +51,10 @@
         android:id="@+id/btnSalidaPicadora"
         android:layout_above="@+id/btnFinPreparatorioPicadora"
         android:layout_alignRight="@+id/btnLlegadaPicadora"
-        android:layout_alignEnd="@+id/btnLlegadaPicadora" />
+        android:layout_alignEnd="@+id/btnLlegadaPicadora"
+        android:enabled="true"
+        android:background="#ffffffff"
+        android:onClick="trasladoSalida" />
 
     <Button
         android:layout_width="wrap_content"
@@ -51,7 +63,10 @@
         android:id="@+id/btnFinPicadoPicadora"
         android:layout_alignBottom="@+id/btnLlegadaPicadora"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:enabled="false"
+        android:background="#ffffffff"
+        android:onClick="picadoFin" />
 
     <Button
         android:layout_width="wrap_content"
@@ -60,7 +75,10 @@
         android:id="@+id/btnInicioPicadoPicadora"
         android:layout_alignBottom="@+id/btnSalidaPicadora"
         android:layout_alignRight="@+id/btnFinPicadoPicadora"
-        android:layout_alignEnd="@+id/btnFinPicadoPicadora" />
+        android:layout_alignEnd="@+id/btnFinPicadoPicadora"
+        android:enabled="true"
+        android:background="#ffffffff"
+        android:onClick="picadoInicio" />
 
     <Button
         android:layout_width="wrap_content"
@@ -69,7 +87,10 @@
         android:id="@+id/btnFinEsperaPicadora"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:enabled="false"
+        android:background="#ffffffff"
+        android:onClick="esperaFin" />
 
     <Button
         android:layout_width="wrap_content"
@@ -79,7 +100,10 @@
         android:layout_above="@+id/btnFinEsperaPicadora"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="26dp" />
+        android:layout_marginBottom="26dp"
+        android:enabled="true"
+        android:background="#ffffffff"
+        android:onClick="esperaInicio" />
 
     <Button
         android:layout_width="wrap_content"
@@ -88,7 +112,10 @@
         android:id="@+id/btnFinRepMantPicadora"
         android:layout_alignBottom="@+id/btnFinEsperaPicadora"
         android:layout_alignLeft="@+id/btnLlegadaPicadora"
-        android:layout_alignStart="@+id/btnLlegadaPicadora" />
+        android:layout_alignStart="@+id/btnLlegadaPicadora"
+        android:enabled="false"
+        android:background="#ffffffff"
+        android:onClick="repMantFin" />
 
     <Button
         android:layout_width="wrap_content"
@@ -97,7 +124,10 @@
         android:id="@+id/btnInicioRepMantPicadora"
         android:layout_alignBottom="@+id/btnInicioEsperaPicadora"
         android:layout_alignLeft="@+id/btnFinRepMantPicadora"
-        android:layout_alignStart="@+id/btnFinRepMantPicadora" />
+        android:layout_alignStart="@+id/btnFinRepMantPicadora"
+        android:enabled="true"
+        android:background="#ffffffff"
+        android:onClick="repMantInicio" />
 
     <Button
         android:layout_width="wrap_content"
@@ -108,7 +138,10 @@
         android:layout_alignRight="@+id/btnEncendidoPicadora"
         android:layout_alignEnd="@+id/btnEncendidoPicadora"
         android:layout_alignLeft="@+id/btnEncendidoPicadora"
-        android:layout_alignStart="@+id/btnEncendidoPicadora" />
+        android:layout_alignStart="@+id/btnEncendidoPicadora"
+        android:enabled="false"
+        android:background="#ffffffff"
+        android:onClick="rotorApagado" />
 
     <Button
         android:layout_width="wrap_content"
@@ -117,7 +150,10 @@
         android:id="@+id/btnEncendidoPicadora"
         android:layout_alignBottom="@+id/btnInicioRepMantPicadora"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:enabled="true"
+        android:background="#ffffffff"
+        android:onClick="rotorEncendido" />
 
     <TextView
         android:layout_width="wrap_content"

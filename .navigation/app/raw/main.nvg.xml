@@ -8,8 +8,8 @@
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.sebastianypol.logisticaforraje.Embolsadora"/>
       <point      
-        x = "3312"      
-        y = "944"/>
+        x = "3784"      
+        y = "1492"/>
     </statePointEntry>
     <statePointEntry>
       <state      
@@ -24,7 +24,7 @@
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.sebastianypol.logisticaforraje.MenuLogisticaForraje"/>
       <point      
-        x = "1088"      
+        x = "1084"      
         y = "916"/>
     </statePointEntry>
     <statePointEntry>
@@ -40,8 +40,8 @@
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.sebastianypol.logisticaforraje.CarroForrajero"/>
       <point      
-        x = "64"      
-        y = "936"/>
+        x = "2368"      
+        y = "1788"/>
     </statePointEntry>
     <statePointEntry>
       <state      
@@ -56,16 +56,16 @@
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "com.sebastianypol.logisticaforraje.Logistica"/>
       <point      
-        x = "2156"      
-        y = "928"/>
+        x = "2396"      
+        y = "128"/>
     </statePointEntry>
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.MenuState"      
         className = "com.sebastianypol.logisticaforraje.Logistica"/>
       <point      
-        x = "3456"      
-        y = "928"/>
+        x = "3992"      
+        y = "592"/>
     </statePointEntry>
   </locations>
 </navigationModel>
