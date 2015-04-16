@@ -27,7 +27,8 @@
         android:layout_below="@+id/txtCarroForrajero"
         android:layout_alignRight="@+id/btnInicioCicloAcarreoCarro"
         android:layout_alignEnd="@+id/btnInicioCicloAcarreoCarro"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioPM"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -39,7 +40,8 @@
         android:layout_above="@+id/btnInicioCicloAcarreoCarro"
         android:layout_alignLeft="@+id/btnFinCicloAcarreoCarro"
         android:layout_alignStart="@+id/btnFinCicloAcarreoCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finPM"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -52,7 +54,8 @@
         android:layout_below="@+id/btnInicioTPreparatorioCarro"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioCiclo"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -64,7 +67,8 @@
         android:layout_alignTop="@+id/btnInicioCicloAcarreoCarro"
         android:layout_alignRight="@+id/btnInicioTEsperaEmbolsadoraCarro"
         android:layout_alignEnd="@+id/btnInicioTEsperaEmbolsadoraCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finCiclo"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -76,7 +80,8 @@
         android:layout_below="@+id/txtCargaIndividualCarro"
         android:layout_alignLeft="@+id/txtCargaIndividualCarro"
         android:layout_alignStart="@+id/txtCargaIndividualCarro"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioCarga"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -90,7 +95,8 @@
         android:layout_alignEnd="@+id/btnInicioCargaIndividualCarro"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finCarga"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -102,7 +108,8 @@
         android:layout_above="@+id/btnFinTiempoAcarreoCarro"
         android:layout_alignLeft="@+id/btnInicioTransporteEnVacioCarro"
         android:layout_alignStart="@+id/btnInicioTransporteEnVacioCarro"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioAcarreo"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -116,7 +123,8 @@
         android:layout_alignStart="@+id/btnInicioTiempoAcarreoCarro"
         android:layout_alignRight="@+id/btnInicioTiempoAcarreoCarro"
         android:layout_alignEnd="@+id/btnInicioTiempoAcarreoCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finAcaarreo"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -128,7 +136,8 @@
         android:layout_alignBottom="@+id/btnInicioTiempoAcarreoCarro"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioEsperaE"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -143,7 +152,8 @@
 
         android:layout_alignLeft="@+id/btnInicioTEsperaEmbolsadoraCarro"
         android:layout_alignStart="@+id/btnInicioTEsperaEmbolsadoraCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finEsperaE"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -156,7 +166,8 @@
         android:layout_below="@+id/btnFinCargaIndividualCarro"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioDescarga"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -170,7 +181,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/btnInicioTIempoDescargaCarro"
         android:layout_alignEnd="@+id/btnInicioTIempoDescargaCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finDescarga"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -181,7 +193,8 @@
         android:background="#ffffffff"
         android:layout_alignBottom="@+id/btnInicioTIempoDescargaCarro"
         android:layout_centerHorizontal="true"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioTV"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -195,7 +208,8 @@
         android:layout_alignStart="@+id/btnInicioTransporteEnVacioCarro"
         android:layout_alignRight="@+id/btnInicioTransporteEnVacioCarro"
         android:layout_alignEnd="@+id/btnInicioTransporteEnVacioCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finTV"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -207,7 +221,8 @@
         android:layout_alignBottom="@+id/btnInicioTransporteEnVacioCarro"
         android:layout_alignRight="@+id/btnFinTEsperaEmbolsadoraCarro"
         android:layout_alignEnd="@+id/btnFinTEsperaEmbolsadoraCarro"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicioEsperaP"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -221,7 +236,8 @@
         android:layout_alignStart="@+id/btnInicioTEsperaPicadoraCarro"
         android:layout_alignRight="@+id/btnInicioTEsperaPicadoraCarro"
         android:layout_alignEnd="@+id/btnInicioTEsperaPicadoraCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="finEsperaP"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -233,7 +249,8 @@
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/txtTiempoPreparatorioCarro"
         android:layout_toStartOf="@+id/txtTiempoPreparatorioCarro"
-        android:enabled="true"/>
+        android:enabled="true"
+        android:onClick="inicio"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -245,7 +262,8 @@
         android:layout_alignTop="@+id/btnInicioRepMantCarro"
         android:layout_toRightOf="@+id/txtTiempoPreparatorioCarro"
         android:layout_toEndOf="@+id/txtTiempoPreparatorioCarro"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="fin"/>
 
     <TextView
         android:layout_width="wrap_content"

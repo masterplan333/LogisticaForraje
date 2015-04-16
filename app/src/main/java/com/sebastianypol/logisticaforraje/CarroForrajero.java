@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.text.format.Time;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -53,6 +54,26 @@ public class CarroForrajero extends ActionBarActivity {
     private final String FEP = "Fin espera";
     private final String I = "Inicio";
     private final String F = "Fin";
+
+    /*Definimos los botones*/
+    private Button btnIPM;
+    private Button btnFPM;
+    private Button btnIC;
+    private Button btnFC;
+    private Button btnICA;
+    private Button btnFCA;
+    private Button btnIA;
+    private Button btnFA;
+    private Button btnIEE;
+    private Button btnFEE;
+    private Button btnID;
+    private Button btnFD;
+    private Button btnITV;
+    private Button btnFTV;
+    private Button btnIEP;
+    private Button btnFEP;
+    private Button btnI;
+    private Button btnF;
 
     private HSSFWorkbook wb;
     private HSSFSheet sheet;
@@ -103,6 +124,45 @@ public class CarroForrajero extends ActionBarActivity {
 
     @Override
     protected void onPause() {
+        //Verificamos que no hayan quedado botones sin apretar, si es el caso se llena la celda con un mensaje
+        btnFPM = (Button) findViewById(R.id.btnFinTPreparatorioCarro);
+        btnFC = (Button) findViewById(R.id.btnFinCicloAcarreoCarro);
+        btnFCA = (Button) findViewById(R.id.btnFinCargaIndividualCarro);
+        btnFA = (Button) findViewById(R.id.btnFinTiempoAcarreoCarro);
+        btnFEE = (Button) findViewById(R.id.btnFinTEsperaEmbolsadoraCarro);
+        btnFD = (Button) findViewById(R.id.btnFinTiempoDescargaCarro);
+        btnFTV = (Button) findViewById(R.id.btnFinTransporteEnVacioCarro);
+        btnFEP = (Button) findViewById(R.id.btnFinTEsperaPicadoraCarro);
+        btnF = (Button) findViewById(R.id.btnFinRepMantCarro);
+
+        if(btnFPM.isEnabled()){
+            escribirCeldaFaltante(FPM);
+        }
+        if(btnFC.isEnabled()){
+            escribirCeldaFaltante(FC);
+        }
+        if(btnFCA.isEnabled()){
+            escribirCeldaFaltante(FCA);
+        }
+        if(btnFA.isEnabled()){
+            escribirCeldaFaltante(FA);
+        }
+        if(btnFD.isEnabled()){
+            escribirCeldaFaltante(FD);
+        }
+        if(btnFEE.isEnabled()){
+            escribirCeldaFaltante(FEE);
+        }
+        if(btnFTV.isEnabled()){
+            escribirCeldaFaltante(FTV);
+        }
+        if(btnFEP.isEnabled()){
+            escribirCeldaFaltante(FEP);
+        }
+        if(btnF.isEnabled()){
+            escribirCeldaFaltante(F);
+        }
+
         // Write the output to a file
         try {
             File file = null;
@@ -110,7 +170,6 @@ public class CarroForrajero extends ActionBarActivity {
             if (isExternalStorageWritable()){
                 path = String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
             }
-            //file = new File(path + File.separator + "Tiempo.xls");
             file = new File(path + File.separator + "Logistica de Forraje"+ File.separator +"Tiempo.xls");
             file.getParentFile().mkdirs();
             fileOut = new FileOutputStream(file);
@@ -163,6 +222,222 @@ public class CarroForrajero extends ActionBarActivity {
         }
 
         super.onResume();
+    }
+
+    public void inicioPM(View v){
+
+        btnIPM = (Button) findViewById(R.id.btnInicioTPreparatorioCarro);
+        btnFPM = (Button) findViewById(R.id.btnFinTPreparatorioCarro);
+
+        escribirCelda(IPM);
+
+        btnFPM.setEnabled(true);
+        btnIPM.setEnabled(false);
+
+    }
+
+    public void finPM(View v){
+
+        btnIPM = (Button) findViewById(R.id.btnInicioTPreparatorioCarro);
+        btnFPM = (Button) findViewById(R.id.btnFinTPreparatorioCarro);
+
+        escribirCelda(FPM);
+
+        btnIPM.setEnabled(true);
+        btnFPM.setEnabled(false);
+
+    }
+
+    public void inicioCiclo(View v){
+
+        btnIC = (Button) findViewById(R.id.btnInicioCicloAcarreoCarro);
+        btnFC = (Button) findViewById(R.id.btnFinCicloAcarreoCarro);
+
+        escribirCelda(IC);
+
+        btnFC.setEnabled(true);
+        btnIC.setEnabled(false);
+
+    }
+
+    public void finCiclo(View v){
+
+        btnIC = (Button) findViewById(R.id.btnInicioCicloAcarreoCarro);
+        btnFC = (Button) findViewById(R.id.btnFinCicloAcarreoCarro);
+
+        escribirCelda(FC);
+
+        btnIC.setEnabled(true);
+        btnFC.setEnabled(false);
+
+    }
+
+    public void inicioCarga(View v){
+
+        btnICA = (Button) findViewById(R.id.btnInicioCargaIndividualCarro);
+        btnFCA = (Button) findViewById(R.id.btnFinCargaIndividualCarro);
+
+        escribirCelda(ICA);
+
+        btnFCA.setEnabled(true);
+        btnICA.setEnabled(false);
+
+    }
+
+    public void finCarga(View v){
+
+        btnICA = (Button) findViewById(R.id.btnInicioCargaIndividualCarro);
+        btnFCA = (Button) findViewById(R.id.btnFinCargaIndividualCarro);
+
+        escribirCelda(FCA);
+
+        btnICA.setEnabled(true);
+        btnFCA.setEnabled(false);
+
+    }
+
+    public void inicioAcarreo(View v){
+
+        btnIA = (Button) findViewById(R.id.btnInicioTiempoAcarreoCarro);
+        btnFA = (Button) findViewById(R.id.btnFinTiempoAcarreoCarro);
+
+        escribirCelda(IA);
+
+        btnFA.setEnabled(true);
+        btnIA.setEnabled(false);
+
+    }
+
+    public void finAcaarreo(View v){
+
+        btnIA = (Button) findViewById(R.id.btnInicioTiempoAcarreoCarro);
+        btnFA = (Button) findViewById(R.id.btnFinTiempoAcarreoCarro);
+
+        escribirCelda(FA);
+
+        btnIA.setEnabled(true);
+        btnFA.setEnabled(false);
+
+    }
+
+    public void inicioEsperaE(View v){
+
+        btnIEE = (Button) findViewById(R.id.btnInicioTEsperaEmbolsadoraCarro);
+        btnFEE = (Button) findViewById(R.id.btnFinTEsperaEmbolsadoraCarro);
+
+        escribirCelda(IEE);
+
+        btnFEE.setEnabled(true);
+        btnIEE.setEnabled(false);
+
+    }
+
+    public void finEsperaE(View v){
+
+        btnIEE = (Button) findViewById(R.id.btnInicioTEsperaEmbolsadoraCarro);
+        btnFEE = (Button) findViewById(R.id.btnFinTEsperaEmbolsadoraCarro);
+
+        escribirCelda(FEE);
+
+        btnIEE.setEnabled(true);
+        btnFEE.setEnabled(false);
+
+    }
+
+    public void inicioDescarga(View v){
+
+        btnID = (Button) findViewById(R.id.btnInicioTIempoDescargaCarro);
+        btnFD = (Button) findViewById(R.id.btnFinTiempoDescargaCarro);
+
+        escribirCelda(ID);
+
+        btnFD.setEnabled(true);
+        btnID.setEnabled(false);
+
+    }
+
+    public void finDescarga(View v){
+
+        btnID = (Button) findViewById(R.id.btnInicioTIempoDescargaCarro);
+        btnFD = (Button) findViewById(R.id.btnFinTiempoDescargaCarro);
+
+        escribirCelda(FD);
+
+        btnID.setEnabled(true);
+        btnFD.setEnabled(false);
+
+    }
+
+    public void inicioTV(View v){
+
+        btnITV = (Button) findViewById(R.id.btnInicioTransporteEnVacioCarro);
+        btnFTV = (Button) findViewById(R.id.btnFinTransporteEnVacioCarro);
+
+        escribirCelda(ITV);
+
+        btnFTV.setEnabled(true);
+        btnITV.setEnabled(false);
+
+    }
+
+    public void finTV(View v){
+
+        btnITV = (Button) findViewById(R.id.btnInicioTransporteEnVacioCarro);
+        btnFTV = (Button) findViewById(R.id.btnFinTransporteEnVacioCarro);
+
+        escribirCelda(FTV);
+
+        btnITV.setEnabled(true);
+        btnFTV.setEnabled(false);
+
+    }
+
+    public void inicioEsperaP(View v){
+
+        btnIEP = (Button) findViewById(R.id.btnInicioTEsperaPicadoraCarro);
+        btnFEP = (Button) findViewById(R.id.btnFinTEsperaPicadoraCarro);
+
+        escribirCelda(IEP);
+
+        btnFEP.setEnabled(true);
+        btnIEP.setEnabled(false);
+
+    }
+
+    public void finEsperaP(View v){
+
+        btnIEP = (Button) findViewById(R.id.btnInicioTEsperaPicadoraCarro);
+        btnFEP = (Button) findViewById(R.id.btnFinTEsperaPicadoraCarro);
+
+        escribirCelda(FEP);
+
+        btnIEP.setEnabled(true);
+        btnFEP.setEnabled(false);
+
+    }
+
+    public void inicio(View v){
+
+        btnI = (Button) findViewById(R.id.btnInicioRepMantCarro);
+        btnF = (Button) findViewById(R.id.btnFinRepMantCarro);
+
+        escribirCelda(I);
+
+        btnF.setEnabled(true);
+        btnI.setEnabled(false);
+
+    }
+
+    public void fin(View v){
+
+        btnI = (Button) findViewById(R.id.btnInicioRepMantCarro);
+        btnF = (Button) findViewById(R.id.btnFinRepMantCarro);
+
+        escribirCelda(F);
+
+        btnI.setEnabled(true);
+        btnF.setEnabled(false);
+
     }
 
     private void escribirCelda(String valorEncabezado){
