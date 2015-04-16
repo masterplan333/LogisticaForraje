@@ -21,12 +21,13 @@
         android:layout_height="wrap_content"
         android:text="Inicio"
         android:id="@+id/btnInicioTiempoPreparatorioEmbolsadora"
+        android:layout_below="@+id/txtEmbolsadora"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="77dp"
         android:background="#ffffffff"
         android:enabled="true"
-        android:onClick="inicioPrep"
-        android:layout_below="@+id/txtTiempoColocacionEmbolsadora"
-        android:layout_alignLeft="@+id/btnFinTiempoPreparatorioEmbolsadora"
-        android:layout_alignStart="@+id/btnFinTiempoPreparatorioEmbolsadora" />
+        android:onClick="inicioPrep" />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,13 +46,13 @@
         android:layout_height="wrap_content"
         android:text="Fin"
         android:id="@+id/btnFinTiempoPreparatorioEmbolsadora"
+        android:layout_marginTop="31dp"
         android:background="#ffffffff"
         android:enabled="false"
         android:onClick="finPrep"
         android:layout_below="@+id/btnInicioTiempoPreparatorioEmbolsadora"
-        android:layout_alignLeft="@+id/btnInicioTiempoGeneralEmbolsadora"
-        android:layout_alignStart="@+id/btnInicioTiempoGeneralEmbolsadora"
-        android:layout_marginTop="25dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -120,9 +121,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="T. Preparatorio"
         android:id="@+id/txtTiempoPreparatorioEmbolsadora"
-        android:layout_alignTop="@+id/txtTiempoColocacionEmbolsadora"
-        android:layout_alignLeft="@+id/btnInicioTiempoPreparatorioEmbolsadora"
-        android:layout_alignStart="@+id/btnInicioTiempoPreparatorioEmbolsadora" />
+        android:layout_above="@+id/btnInicioColocacionBolsaEmbolsadora"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -130,10 +131,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="T. Colocación de Bolsa"
         android:id="@+id/txtTiempoColocacionEmbolsadora"
-        android:layout_below="@+id/txtEmbolsadora"
-        android:layout_toEndOf="@+id/txtTiempoPreparatorioEmbolsadora"
-        android:layout_alignLeft="@+id/txtTiempoRepMantEmbolsadora"
-        android:layout_alignStart="@+id/txtTiempoRepMantEmbolsadora" />
+        android:layout_above="@+id/btnInicioColocacionBolsaEmbolsadora"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -176,12 +176,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Tiempo General de Embolsado"
         android:id="@+id/txtTiempoGeneralEmbolsadora"
-        android:layout_below="@+id/btnFinTiempoPreparatorioEmbolsadora"
-        android:layout_marginTop="25dp"
-        android:layout_alignLeft="@+id/txtEmbolsadora"
-        android:layout_alignStart="@+id/txtEmbolsadora"
-        android:layout_alignRight="@+id/txtEmbolsadora"
-        android:layout_alignEnd="@+id/txtEmbolsadora" />
+        android:layout_marginBottom="212dp"
+        android:layout_above="@+id/txtTiempoEsperaEmbolsadora"
+        android:layout_centerHorizontal="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

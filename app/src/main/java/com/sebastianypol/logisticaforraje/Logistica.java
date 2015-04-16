@@ -1,6 +1,7 @@
 package com.sebastianypol.logisticaforraje;
 
 import android.content.Context;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.format.Time;
@@ -18,6 +19,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,6 +29,28 @@ import java.util.Iterator;
 
 public class Logistica extends ActionBarActivity {
 
+    /*Titulos principales hojaPicadora*/
+    private final String T_PREP = "Tiempo preparatorio";
+    private final String T_TRAS = "Tiempo de traslado interno";
+    private final String T_PICD = "Tiempo de picado";
+    private final String T_ESP = "Tiempo de espera";
+    private final String T_REPMAN = "Tiempo de reparación y mantenimiento";
+    private final String F_ROTOR = "Funcionamiento del rotor";
+    /*Titulos secundarios hojaPicadora*/
+    private final String IPM = "Inicio puesta en marcha";
+    private final String FPM = "Fin puesta en marcha";
+    private final String SL = "Salida al lote";
+    private final String LT = "Llegada a tranquera";
+    private final String IP = "Inicio picado";
+    private final String FP = "Fin picado";
+    private final String ITE = "Inicio tiempo de espera";
+    private final String FTE = "Fin tiempo de espera";
+    private final String IRM = "Inicio de RepMant";
+    private final String FRM = "Fin de RepMant";
+    private final String ER = "Encendido del rotor";
+    private final String AR = "Apagado del rotor";
+
+    /*Definimos los botones*/
     private Button btnInicioPrep;// = (Button) findViewById(R.id.btnInicioPreparatorioPicadora);
     private Button btnFinPrep;// = (Button) findViewById(R.id.btnFinPreparatorioPicadora);
     private Button btnSalida;// = (Button) findViewById(R.id.btnSalidaPicadora);
@@ -39,7 +63,7 @@ public class Logistica extends ActionBarActivity {
     private Button btnFinRepMant;// = (Button) findViewById(R.id.btnFinRepMantPicadora);
     private Button btnEncendido;// = (Button) findViewById(R.id.btnEncendidoPicadora);
     private Button btnApagado;// = (Button) findViewById(R.id.btnApagadoPicadora);
-    private String hora = new String();
+
     private HSSFWorkbook wb;
     private HSSFSheet sheet;
     private GeneraHora hoja;
@@ -56,15 +80,32 @@ public class Logistica extends ActionBarActivity {
 
         /*Tratamos de leer el archivos xls de lo contrario lo creamos.*/
         try {
-            fileIn = new FileInputStream("Tiempos.xls");
-            POIFSFileSystem fs = new POIFSFileSystem(fileIn);
-            wb = new HSSFWorkbook(fs);
+
+            File file = null;
+            String path = null;
+            if (isExternalStorageReadable()){
+                path = String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+            }
+            //file = new File(path + File.separator + "Tiempo.xls");
+            file = new File(path + File.separator + "Logistica de Forraje"+ File.separator +"Tiempo.xls");
+            if(file.exists()){
+                fileIn = new FileInputStream(file);
+            }
+            else{
+                throw new FileNotFoundException();
+            }
+
+            wb = new HSSFWorkbook(fileIn);
             sheet = wb.getSheetAt(0);
+            sheet.setSelected(true);
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             hoja = new GeneraHora();
             wb = (HSSFWorkbook) hoja.getLibro();
+            sheet = wb.getSheetAt(0);
+            sheet.setSelected(true);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,11 +115,43 @@ public class Logistica extends ActionBarActivity {
 
     @Override
     protected void onPause() {
+        //Verificamos que no hayan quedado botones sin apretar, si es el caso se llena la celda con un mensaje
+        btnFinPrep = (Button) findViewById(R.id.btnFinPreparatorioPicadora);
+        btnLlegada = (Button) findViewById(R.id.btnLlegadaPicadora);
+        btnFinPica = (Button) findViewById(R.id.btnFinPicadoPicadora);
+        btnFinEsp = (Button) findViewById(R.id.btnFinEsperaPicadora);
+        btnFinRepMant = (Button) findViewById(R.id.btnFinRepMantPicadora);
+        btnApagado = (Button) findViewById(R.id.btnApagadoPicadora);
+
+        if(btnFinPrep.isEnabled()){
+            escribirCeldaFaltante(FPM);
+        }
+        if(btnLlegada.isEnabled()){
+            escribirCeldaFaltante(LT);
+        }
+        if(btnFinPica.isEnabled()){
+            escribirCeldaFaltante(FP);
+        }
+        if(btnFinEsp.isEnabled()){
+            escribirCeldaFaltante(FTE);
+        }
+        if(btnFinRepMant.isEnabled()){
+            escribirCeldaFaltante(FRM);
+        }
+        if(btnApagado.isEnabled()){
+            escribirCeldaFaltante(AR        );
+        }
         // Write the output to a file
         try {
-//            fileOut = new FileOutputStream("Tiempos.xls");
-            //hoja.ajustaColumnas(wb.getSheet("hojaPicadora"));
-            fileOut = openFileOutput("Tiempos.xls", Context.MODE_PRIVATE);
+            File file = null;
+            String path = null;
+            if (isExternalStorageWritable()){
+                path = String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+            }
+            //file = new File(path + File.separator + "Tiempo.xls");
+            file = new File(path + File.separator + "Logistica de Forraje"+ File.separator +"Tiempo.xls");
+            file.getParentFile().mkdirs();
+            fileOut = new FileOutputStream(file);
             wb.write(fileOut);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -100,6 +173,35 @@ public class Logistica extends ActionBarActivity {
                 }
         }
         super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        try {
+            File file = null;
+            String path = null;
+            if (isExternalStorageReadable()) {
+                path = String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+            }
+            //file = new File(path + File.separator + "Tiempo.xls");
+            file = new File(path + File.separator + "Logistica de Forraje" + File.separator + "Tiempo.xls");
+            if (file.exists()) {
+                fileIn = new FileInputStream(file);
+            } else {
+                throw new FileNotFoundException();
+            }
+
+            wb = new HSSFWorkbook(fileIn);
+            sheet = wb.getSheetAt(0);
+            sheet.setSelected(true);
+            super.onResume();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        super.onResume();
     }
 
     @Override
@@ -129,7 +231,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioPrep = (Button) findViewById(R.id.btnInicioPreparatorioPicadora);
         btnFinPrep = (Button) findViewById(R.id.btnFinPreparatorioPicadora);
 
-        escribirCelda(hoja.IPM);
+        escribirCelda(IPM);
 
         btnFinPrep.setEnabled(true);
         btnInicioPrep.setEnabled(false);
@@ -141,7 +243,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioPrep = (Button) findViewById(R.id.btnInicioPreparatorioPicadora);
         btnFinPrep = (Button) findViewById(R.id.btnFinPreparatorioPicadora);
 
-        escribirCelda(hoja.FPM);
+        escribirCelda(FPM);
 
         btnInicioPrep.setEnabled(true);
         btnFinPrep.setEnabled(false);
@@ -152,7 +254,7 @@ public class Logistica extends ActionBarActivity {
         btnSalida = (Button) findViewById(R.id.btnSalidaPicadora);
         btnLlegada = (Button) findViewById(R.id.btnLlegadaPicadora);
 
-        escribirCelda(hoja.SL);
+        escribirCelda(SL);
 
         btnLlegada.setEnabled(true);
         btnSalida.setEnabled(false);
@@ -163,7 +265,7 @@ public class Logistica extends ActionBarActivity {
         btnSalida = (Button) findViewById(R.id.btnSalidaPicadora);
         btnLlegada = (Button) findViewById(R.id.btnLlegadaPicadora);
 
-        escribirCelda(hoja.LT);
+        escribirCelda(LT);
 
         btnSalida.setEnabled(true);
         btnLlegada.setEnabled(false);
@@ -174,7 +276,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioPica = (Button) findViewById(R.id.btnInicioPicadoPicadora);
         btnFinPica = (Button) findViewById(R.id.btnFinPicadoPicadora);
 
-        escribirCelda(hoja.IP);
+        escribirCelda(IP);
 
         btnFinPica.setEnabled(true);
         btnInicioPica.setEnabled(false);
@@ -185,7 +287,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioPica = (Button) findViewById(R.id.btnInicioPicadoPicadora);
         btnFinPica = (Button) findViewById(R.id.btnFinPicadoPicadora);
 
-        escribirCelda(hoja.FP);
+        escribirCelda(FP);
 
         btnInicioPica.setEnabled(true);
         btnFinPica.setEnabled(false);
@@ -196,7 +298,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioEsp = (Button) findViewById(R.id.btnInicioEsperaPicadora);
         btnFinEsp = (Button) findViewById(R.id.btnFinEsperaPicadora);
 
-        escribirCelda(hoja.ITE);
+        escribirCelda(ITE);
 
         btnFinEsp.setEnabled(true);
         btnInicioEsp.setEnabled(false);
@@ -207,7 +309,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioEsp = (Button) findViewById(R.id.btnInicioEsperaPicadora);
         btnFinEsp = (Button) findViewById(R.id.btnFinEsperaPicadora);
 
-        escribirCelda(hoja.FTE);
+        escribirCelda(FTE);
 
         btnInicioEsp.setEnabled(true);
         btnFinEsp.setEnabled(false);
@@ -218,7 +320,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioRepMant = (Button) findViewById(R.id.btnInicioRepMantPicadora);
         btnFinRepMant = (Button) findViewById(R.id.btnFinRepMantPicadora);
 
-        escribirCelda(hoja.IRM);
+        escribirCelda(IRM);
 
         btnFinRepMant.setEnabled(true);
         btnInicioRepMant.setEnabled(false);
@@ -229,7 +331,7 @@ public class Logistica extends ActionBarActivity {
         btnInicioRepMant = (Button) findViewById(R.id.btnInicioRepMantPicadora);
         btnFinRepMant = (Button) findViewById(R.id.btnFinRepMantPicadora);
 
-        escribirCelda(hoja.FRM);
+        escribirCelda(FRM);
 
         btnInicioRepMant.setEnabled(true);
         btnFinRepMant.setEnabled(false);
@@ -240,7 +342,7 @@ public class Logistica extends ActionBarActivity {
         btnEncendido = (Button) findViewById(R.id.btnEncendidoPicadora);
         btnApagado = (Button) findViewById(R.id.btnApagadoPicadora);
 
-        escribirCelda(hoja.ER);
+        escribirCelda(ER);
 
         btnApagado.setEnabled(true);
         btnEncendido.setEnabled(false);
@@ -251,7 +353,7 @@ public class Logistica extends ActionBarActivity {
         btnEncendido = (Button) findViewById(R.id.btnEncendidoPicadora);
         btnApagado = (Button) findViewById(R.id.btnApagadoPicadora);
 
-        escribirCelda(hoja.AR);
+        escribirCelda(AR);
 
         btnEncendido.setEnabled(true);
         btnApagado.setEnabled(false);
@@ -298,7 +400,138 @@ public class Logistica extends ActionBarActivity {
         celda.setCellValue(today.format("%k:%M:%S"));
 
 
-        Log.v("COLUMNA--->", String.valueOf(columna));
+        //Log.v("COLUMNA--->", String.valueOf(columna));
 
+    }
+
+    private void escribirCeldaFaltante(String valorEncabezado){
+
+        //sheet.rowIterator();
+        Cell celda;
+        int columna = 0;
+        int fila = 0;
+        sheet = wb.getSheetAt(0);
+
+        for (Row row : sheet){
+            for (Cell cell : row) {
+                if (cell.getStringCellValue().equals(valorEncabezado)) {
+                    columna = cell.getColumnIndex();
+                    break;
+                }
+            }
+        }
+        Log.v("Columna----> ", String.valueOf(columna));
+
+        for (Row row : sheet){
+            if(row.getRowNum() != 0) {
+                Cell aux = row.getCell(columna, Row.RETURN_NULL_AND_BLANK);
+                if (aux == null) {
+                    fila = row.getRowNum();
+                    break;
+                }
+                else{
+                    if(row.getRowNum()==sheet.getLastRowNum()) {
+                        Row auxRow = sheet.createRow(sheet.getPhysicalNumberOfRows());
+                        fila = auxRow.getRowNum();
+                    }
+                }
+            }
+        }
+
+      // celda = sheet.getRow(fila).getCell(columna);
+        celda = sheet.getRow(fila).createCell(columna);
+        celda.setCellValue("Valor no registrado");
+
+    }
+
+    public String getT_PREP() {
+        return T_PREP;
+    }
+
+    public String getT_TRAS() {
+        return T_TRAS;
+    }
+
+    public String getT_PICD() {
+        return T_PICD;
+    }
+
+    public String getT_ESP() {
+        return T_ESP;
+    }
+
+    public String getT_REPMAN() {
+        return T_REPMAN;
+    }
+
+    public String getF_ROTOR() {
+        return F_ROTOR;
+    }
+
+    public String getIPM() {
+        return IPM;
+    }
+
+    public String getFPM() {
+        return FPM;
+    }
+
+    public String getSL() {
+        return SL;
+    }
+
+    public String getLT() {
+        return LT;
+    }
+
+    public String getIP() {
+        return IP;
+    }
+
+    public String getFP() {
+        return FP;
+    }
+
+    public String getITE() {
+        return ITE;
+    }
+
+    public String getFTE() {
+        return FTE;
+    }
+
+    public String getIRM() {
+        return IRM;
+    }
+
+    public String getFRM() {
+        return FRM;
+    }
+
+    public String getER() {
+        return ER;
+    }
+
+    public String getAR() {
+        return AR;
+    }
+
+    /* Checks if external storage is available for read and write */
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+    /* Checks if external storage is available to at least read */
+    public boolean isExternalStorageReadable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            return true;
+        }
+        return false;
     }
 }

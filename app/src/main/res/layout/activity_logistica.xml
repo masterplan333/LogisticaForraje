@@ -17,6 +17,7 @@
         android:layout_alignStart="@+id/btnFinPreparatorioPicadora"
         android:enabled="true"
         android:background="#ffffffff"
+        android:longClickable="true"
         android:onClick="preparatorioInicio" />
 
     <Button

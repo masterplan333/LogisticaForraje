@@ -26,7 +26,8 @@
         android:background="#ffff5f06"
         android:layout_below="@+id/txtCarroForrajero"
         android:layout_alignRight="@+id/btnInicioCicloAcarreoCarro"
-        android:layout_alignEnd="@+id/btnInicioCicloAcarreoCarro" />
+        android:layout_alignEnd="@+id/btnInicioCicloAcarreoCarro"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -37,7 +38,8 @@
         android:background="#ffff5f06"
         android:layout_above="@+id/btnInicioCicloAcarreoCarro"
         android:layout_alignLeft="@+id/btnFinCicloAcarreoCarro"
-        android:layout_alignStart="@+id/btnFinCicloAcarreoCarro" />
+        android:layout_alignStart="@+id/btnFinCicloAcarreoCarro"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -49,7 +51,8 @@
         android:background="#ffff1e9d"
         android:layout_below="@+id/btnInicioTPreparatorioCarro"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -60,7 +63,8 @@
         android:background="#ffff1e9d"
         android:layout_alignTop="@+id/btnInicioCicloAcarreoCarro"
         android:layout_alignRight="@+id/btnInicioTEsperaEmbolsadoraCarro"
-        android:layout_alignEnd="@+id/btnInicioTEsperaEmbolsadoraCarro" />
+        android:layout_alignEnd="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -68,9 +72,11 @@
         android:layout_height="wrap_content"
         android:text="Inicio"
         android:id="@+id/btnInicioCargaIndividualCarro"
+        android:background="#ffffffff"
         android:layout_below="@+id/txtCargaIndividualCarro"
         android:layout_alignLeft="@+id/txtCargaIndividualCarro"
-        android:layout_alignStart="@+id/txtCargaIndividualCarro" />
+        android:layout_alignStart="@+id/txtCargaIndividualCarro"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -78,11 +84,13 @@
         android:layout_height="wrap_content"
         android:text="Fin"
         android:id="@+id/btnFinCargaIndividualCarro"
+        android:background="#ffffffff"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/btnInicioCargaIndividualCarro"
         android:layout_alignEnd="@+id/btnInicioCargaIndividualCarro"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -90,9 +98,11 @@
         android:layout_height="wrap_content"
         android:text="Inicio"
         android:id="@+id/btnInicioTiempoAcarreoCarro"
+        android:background="#ffffffff"
         android:layout_above="@+id/btnFinTiempoAcarreoCarro"
         android:layout_alignLeft="@+id/btnInicioTransporteEnVacioCarro"
-        android:layout_alignStart="@+id/btnInicioTransporteEnVacioCarro" />
+        android:layout_alignStart="@+id/btnInicioTransporteEnVacioCarro"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -100,11 +110,13 @@
         android:layout_height="wrap_content"
         android:text="Fin"
         android:id="@+id/btnFinTiempoAcarreoCarro"
+        android:background="#ffffffff"
         android:layout_above="@+id/btnInicioTIempoDescargaCarro"
         android:layout_alignLeft="@+id/btnInicioTiempoAcarreoCarro"
         android:layout_alignStart="@+id/btnInicioTiempoAcarreoCarro"
         android:layout_alignRight="@+id/btnInicioTiempoAcarreoCarro"
-        android:layout_alignEnd="@+id/btnInicioTiempoAcarreoCarro" />
+        android:layout_alignEnd="@+id/btnInicioTiempoAcarreoCarro"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -112,9 +124,11 @@
         android:layout_height="wrap_content"
         android:text="Inicio"
         android:id="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:background="#ffffffff"
         android:layout_alignBottom="@+id/btnInicioTiempoAcarreoCarro"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -122,12 +136,14 @@
         android:layout_height="wrap_content"
         android:text="Fin"
         android:id="@+id/btnFinTEsperaEmbolsadoraCarro"
+        android:background="#ffffffff"
         android:layout_alignBottom="@+id/btnFinTiempoAcarreoCarro"
         android:layout_alignRight="@+id/btnInicioTEsperaEmbolsadoraCarro"
         android:layout_alignEnd="@+id/btnInicioTEsperaEmbolsadoraCarro"
-        android:layout_toEndOf="@+id/btnFinRepMantCarro"
+
         android:layout_alignLeft="@+id/btnInicioTEsperaEmbolsadoraCarro"
-        android:layout_alignStart="@+id/btnInicioTEsperaEmbolsadoraCarro" />
+        android:layout_alignStart="@+id/btnInicioTEsperaEmbolsadoraCarro"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -135,10 +151,12 @@
         android:layout_height="wrap_content"
         android:text="Inicio"
         android:id="@+id/btnInicioTIempoDescargaCarro"
+        android:background="#ffffffff"
         android:layout_marginTop="44dp"
         android:layout_below="@+id/btnFinCargaIndividualCarro"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -146,11 +164,13 @@
         android:layout_height="wrap_content"
         android:text="Fin"
         android:id="@+id/btnFinTiempoDescargaCarro"
+        android:background="#ffffffff"
         android:layout_below="@+id/btnInicioTIempoDescargaCarro"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/btnInicioTIempoDescargaCarro"
-        android:layout_alignEnd="@+id/btnInicioTIempoDescargaCarro" />
+        android:layout_alignEnd="@+id/btnInicioTIempoDescargaCarro"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -158,8 +178,10 @@
         android:layout_height="wrap_content"
         android:text="Inicio"
         android:id="@+id/btnInicioTransporteEnVacioCarro"
+        android:background="#ffffffff"
         android:layout_alignBottom="@+id/btnInicioTIempoDescargaCarro"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -167,11 +189,13 @@
         android:layout_height="wrap_content"
         android:text="Fin"
         android:id="@+id/btnFinTransporteEnVacioCarro"
+        android:background="#ffffffff"
         android:layout_alignTop="@+id/btnFinTiempoDescargaCarro"
         android:layout_alignLeft="@+id/btnInicioTransporteEnVacioCarro"
         android:layout_alignStart="@+id/btnInicioTransporteEnVacioCarro"
         android:layout_alignRight="@+id/btnInicioTransporteEnVacioCarro"
-        android:layout_alignEnd="@+id/btnInicioTransporteEnVacioCarro" />
+        android:layout_alignEnd="@+id/btnInicioTransporteEnVacioCarro"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -179,9 +203,11 @@
         android:layout_height="wrap_content"
         android:text="Inicio"
         android:id="@+id/btnInicioTEsperaPicadoraCarro"
+        android:background="#ffffffff"
         android:layout_alignBottom="@+id/btnInicioTransporteEnVacioCarro"
         android:layout_alignRight="@+id/btnFinTEsperaEmbolsadoraCarro"
-        android:layout_alignEnd="@+id/btnFinTEsperaEmbolsadoraCarro" />
+        android:layout_alignEnd="@+id/btnFinTEsperaEmbolsadoraCarro"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -189,11 +215,13 @@
         android:layout_height="wrap_content"
         android:text="Fin"
         android:id="@+id/btnFinTEsperaPicadoraCarro"
+        android:background="#ffffffff"
         android:layout_alignTop="@+id/btnFinTransporteEnVacioCarro"
         android:layout_alignLeft="@+id/btnInicioTEsperaPicadoraCarro"
         android:layout_alignStart="@+id/btnInicioTEsperaPicadoraCarro"
         android:layout_alignRight="@+id/btnInicioTEsperaPicadoraCarro"
-        android:layout_alignEnd="@+id/btnInicioTEsperaPicadoraCarro" />
+        android:layout_alignEnd="@+id/btnInicioTEsperaPicadoraCarro"
+        android:enabled="false"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -204,7 +232,8 @@
         android:background="#ff148cff"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/txtTiempoPreparatorioCarro"
-        android:layout_toStartOf="@+id/txtTiempoPreparatorioCarro" />
+        android:layout_toStartOf="@+id/txtTiempoPreparatorioCarro"
+        android:enabled="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -215,7 +244,8 @@
         android:background="#ff148cff"
         android:layout_alignTop="@+id/btnInicioRepMantCarro"
         android:layout_toRightOf="@+id/txtTiempoPreparatorioCarro"
-        android:layout_toEndOf="@+id/txtTiempoPreparatorioCarro" />
+        android:layout_toEndOf="@+id/txtTiempoPreparatorioCarro"
+        android:enabled="false"/>
 
     <TextView
         android:layout_width="wrap_content"

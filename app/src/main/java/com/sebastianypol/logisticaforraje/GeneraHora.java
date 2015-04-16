@@ -19,27 +19,6 @@ import org.apache.poi.ss.util.CellRangeAddress;
 
 public class GeneraHora {
 
-    /*Titulos principales hojaPicadora*/
-    public final String T_PREP = "Tiempo preparatorio";
-    public final String T_TRAS = "Tiempo de traslado interno";
-    public final String T_PICD = "Tiempo de picado";
-    public final String T_ESP = "Tiempo de espera";
-    public final String T_REPMAN = "Tiempo de reparación y mantenimiento";
-    public final String F_ROTOR = "Funcionamiento del rotor";
-    /*Titulos secundarios hojaPicadora*/
-    public final String IPM = "Inicio puesta en marcha";
-    public final String FPM = "Fin puesta en marcha";
-    public final String SL = "Salida al lote";
-    public final String LT = "Llegada a tranquera";
-    public final String IP = "Inicio picado";
-    public final String FP = "Fin picado";
-    public final String ITE = "Inicio tiempo de espera";
-    public final String FTE = "Fin tiempo de espera";
-    public final String IRM = "Inicio de RepMant";
-    public final String FRM = "Fin de RepMant";
-    public final String ER = "Encendido del rotor";
-    public final String AR = "Apagado del rotor";
-
     // documento con las hojas de calculo
     private final Workbook libro;
 
@@ -64,6 +43,11 @@ public class GeneraHora {
         this.estiloCeldaConFormula = getEstiloCeldaConFormula();
         hojaPicadora.setSelected(true);
         anadeFilaEncabezadoPicadora();
+        hojaEmbolsadora.setSelected(true);
+        anadeFilaEncabezadoEmbolsadora();
+        hojaLogicaForraje.setSelected(true);
+        anadeFilaEncabezadoLogicaForraje();
+
     }
 
     // crea una fila con los datos del piloto: nombre, tiempos, total, media y mejor tiempo ---> Función en desuso
@@ -126,76 +110,226 @@ public class GeneraHora {
 
     // crea la fila y celdas del encabezado con el nombre de las columnas
     private void anadeFilaEncabezadoPicadora() {
+        Logistica log = new Logistica();
         Row filaEncabezado = getNuevaFila(hojaPicadora);
         /*Se crean el encabezado principal*/
         int numeroCelda = 0;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, T_PREP);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getT_PREP());
         unirCeldas(hojaPicadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
         numeroCelda = numeroCelda + 2;
-        creaCeldaEncabezado(filaEncabezado, (numeroCelda), T_TRAS);
+        creaCeldaEncabezado(filaEncabezado, (numeroCelda), log.getT_TRAS());
         unirCeldas(hojaPicadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
         numeroCelda = numeroCelda + 2;
-        creaCeldaEncabezado(filaEncabezado, (numeroCelda), T_PICD);
+        creaCeldaEncabezado(filaEncabezado, (numeroCelda), log.getT_PICD());
         unirCeldas(hojaPicadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
         numeroCelda = numeroCelda + 2;
-        creaCeldaEncabezado(filaEncabezado, (numeroCelda), T_ESP);
+        creaCeldaEncabezado(filaEncabezado, (numeroCelda), log.getT_ESP());
         unirCeldas(hojaPicadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
         numeroCelda = numeroCelda + 2;
-        creaCeldaEncabezado(filaEncabezado, (numeroCelda), T_REPMAN);
+        creaCeldaEncabezado(filaEncabezado, (numeroCelda), log.getT_REPMAN());
         unirCeldas(hojaPicadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
         numeroCelda = numeroCelda + 2;
-        creaCeldaEncabezado(filaEncabezado, (numeroCelda), F_ROTOR);
+        creaCeldaEncabezado(filaEncabezado, (numeroCelda), log.getF_ROTOR());
         unirCeldas(hojaPicadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
 
         /*Se crea el encabezado secundario*/
         filaEncabezado = getNuevaFila(hojaPicadora);
         numeroCelda = 0;
         //filaEncabezado.setRowNum(filaEncabezado.getRowNum() + 1);
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, IPM);
-        ajustaColumna(hojaPicadora, numeroCelda, IPM);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getIPM());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getIPM());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, FPM);
-        ajustaColumna(hojaPicadora, numeroCelda, FPM);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getFPM());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getFPM());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, SL);
-        ajustaColumna(hojaPicadora, numeroCelda, SL);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getSL());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getSL());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, LT);
-        ajustaColumna(hojaPicadora, numeroCelda, LT);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getLT());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getLT());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, IP);
-        ajustaColumna(hojaPicadora, numeroCelda, IP);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getIP());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getIP());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, FP);
-        ajustaColumna(hojaPicadora, numeroCelda, FP);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getFP());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getFP());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, ITE);
-        ajustaColumna(hojaPicadora, numeroCelda, ITE);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getITE());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getITE());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, FTE);
-        ajustaColumna(hojaPicadora, numeroCelda, FTE);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getFTE());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getFTE());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, IRM);
-        ajustaColumna(hojaPicadora, numeroCelda, IRM);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getIRM());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getIRM());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, FRM);
-        ajustaColumna(hojaPicadora, numeroCelda, FRM);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getFRM());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getFRM());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, ER);
-        ajustaColumna(hojaPicadora, numeroCelda, ER);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getER());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getER());
         numeroCelda = numeroCelda + 1;
-        creaCeldaEncabezado(filaEncabezado, numeroCelda, AR);
-        ajustaColumna(hojaPicadora, numeroCelda, AR);
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, log.getAR());
+        ajustaColumna(hojaPicadora, numeroCelda, log.getAR());
 
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo Preparatorio"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, numeroCelda, "Ciclo de acarreo"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo de carga individual"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo de acarreo"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo de espera embolsadora"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo de descarga"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo de transporte en vacío"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo de espera en picadora"); numeroCelda = numeroCelda + 2;
-//        creaCeldaEncabezado(filaEncabezado, (numeroCelda + 1), "Tiempo de reparación y mantenimiento"); numeroCelda = numeroCelda + 2;
+    }
+
+    private void anadeFilaEncabezadoEmbolsadora() {
+        Embolsadora emb = new Embolsadora();
+        Row filaEncabezado = getNuevaFila(hojaEmbolsadora);
+        /*Se crean el encabezado principal*/
+        int numeroCelda = 0;
+
+        /*Se crean el encabezado principal*/
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getT_PREP());
+        unirCeldas(hojaEmbolsadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getT_BOLSA());
+        unirCeldas(hojaEmbolsadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getT_EMBOLSADO());
+        unirCeldas(hojaEmbolsadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getT_ESP());
+        unirCeldas(hojaEmbolsadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getT_MUERTO());
+        unirCeldas(hojaEmbolsadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+//        numeroCelda = numeroCelda + 2;
+//        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getT_OP_BOLSA());
+//        unirCeldas(hojaEmbolsadora, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+
+        /*Se crean el encabezado secundario*/
+        filaEncabezado = getNuevaFila(hojaEmbolsadora);
+        numeroCelda = 0;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getIPM());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getIPM());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getFPM());
+        ajustaColumna(hojaEmbolsadora, numeroCelda,emb.getFPM() );
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getIC());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getIC());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getFC());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getFC());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getIE());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getIE());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getFE());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getFE());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getITE());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getITE());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getFTE());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getFTE());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getITM());
+        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getITM());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getFTM());
+        ajustaColumna(hojaEmbolsadora, numeroCelda,emb.getFTM());
+//        numeroCelda = numeroCelda + 1;
+//        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getI_EMBUTIDO());
+//        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getI_EMBUTIDO());
+//        numeroCelda = numeroCelda + 1;
+//        creaCeldaEncabezado(filaEncabezado, numeroCelda, emb.getF_EMBUTIDO());
+//        ajustaColumna(hojaEmbolsadora, numeroCelda, emb.getF_EMBUTIDO());
+
+    }
+
+    private void anadeFilaEncabezadoLogicaForraje() {
+        CarroForrajero car = new CarroForrajero();
+        Row filaEncabezado = getNuevaFila(hojaLogicaForraje);
+        /*Se crean el encabezado principal*/
+        int numeroCelda = 0;
+
+         /*Se crean el encabezado principal*/
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_PREP());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getC_ACARREO());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_CARG_INDV());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_ACARREO());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_ESP_EMB());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_DES());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_TRANS());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_ESP_PIC());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+        numeroCelda = numeroCelda + 2;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getT_REPMANT());
+        unirCeldas(hojaLogicaForraje, filaEncabezado.getRowNum(), filaEncabezado.getRowNum(), numeroCelda, numeroCelda+1);
+
+        /*Se crean el encabezado secundario*/
+        filaEncabezado = getNuevaFila(hojaLogicaForraje);
+        numeroCelda = 0;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getIPM());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getIPM());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFPM());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFPM());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getIC());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getIC());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFC());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFC());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getICA());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getICA());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFCA());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFCA());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getIA());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getIA());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFA());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFA());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getIEE());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getIEE());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFEE());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFEE());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getID());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getID());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFD());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFD());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getITV());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getITV());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFTV());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFTV());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getIEP());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getIEP());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getFEP());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getFEP());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getI());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getI());
+        numeroCelda = numeroCelda + 1;
+        creaCeldaEncabezado(filaEncabezado, numeroCelda, car.getF());
+        ajustaColumna(hojaLogicaForraje, numeroCelda, car.getF());
 
     }
 
